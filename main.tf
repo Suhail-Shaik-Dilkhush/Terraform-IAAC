@@ -1,13 +1,14 @@
 provider "aws" {
-  region = "us-east-1"
+  region = var.region
 }
 
+provider "kubernetes" {
+  host                   = module.eks.cluster_endpoint
+  cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
+}
 
-#need to create a bucket to store the .tfstate file
-resource "aws_s3_bucket" "my_bucket" {
-  bucket = "my-unique-bucket-name-123456"
-  tags = {
-    Name        = "MyBucket"
-    Environment = "Dev"
-  }
+data "aws_availability_zones" "available" {}
+
+locals {
+  cluster_name = var.clusterName
 }
