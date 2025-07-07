@@ -21,6 +21,10 @@ env:
 jobs:
   terraform:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
