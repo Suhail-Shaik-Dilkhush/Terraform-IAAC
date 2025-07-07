@@ -6,12 +6,12 @@ on:
       - main
       - stage
     paths:
-      - ../**
+      - terraform/**
   pull_request:
     branches:
       - main
     paths:
-      - ../**
+      - terraform/**
 env:
   AWS_REGION: eu-north-1
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
