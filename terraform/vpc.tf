@@ -1,5 +1,6 @@
 module "vpc" {
   source          = "terraform-aws-modules/vpc/aws"
+  version         = "~> 5.0"
   name            = "Vprofile-VPC"
   cidr            = "172.0.0.0/16"
   azs             = split(data.aws_availability_zones.available.names, "0,3")
