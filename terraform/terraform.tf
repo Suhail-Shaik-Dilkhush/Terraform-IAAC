@@ -28,10 +28,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "eks-iaas-vprofile-project"
-    key            = "eks/terraform.tfstate"
-    region         = "eu-north-1"
-    dynamodb_table = "vprofile-terraform-lock"
+    bucket = "eks-iaas-vprofile-project"
+    key    = "eks/terraform.tfstate"
+    region = "eu-north-1"
 
   }
 
