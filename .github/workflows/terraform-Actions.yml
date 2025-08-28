@@ -1,6 +1,7 @@
 ---
 name: Terraform Actions
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -81,4 +82,4 @@ jobs:
         id: install_ingress
         if: steps.Apply.outcome == 'success' && steps.getconfig.outcome == 'success'
         run: |
-          kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml
+          kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml -validate=false
