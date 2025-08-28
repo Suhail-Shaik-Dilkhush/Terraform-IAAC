@@ -78,6 +78,14 @@ jobs:
         if: steps.Apply.outcome == 'success'
         run: aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.EKS_CLUSTER }}
 
+      - name: running manual command to test kubectl
+        if: steps.getconfig.outcome == 'success'
+        run: |
+          kubectl get nodes
+          kubectl get ns 
+          kubectl get pods
+          cat .kube/config
+
       - name: Install Ingress Controller
         id: install_ingress
         if: steps.Apply.outcome == 'success' && steps.getconfig.outcome == 'success'
