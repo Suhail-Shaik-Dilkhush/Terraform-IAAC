@@ -81,7 +81,7 @@ jobs:
       - name: running manual command to test kubectl
         if: steps.getconfig.outcome == 'success'
         run: |
-          cat .kube/config
+          cat /home/runner/.kube/config
           aws sts get-caller-identity
 
       - name: Install Ingress Controller
