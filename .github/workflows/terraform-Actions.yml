@@ -62,7 +62,7 @@ jobs:
       #test
       - name: Terraform Apply
         id: Apply
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' | workflow.event_name == 'workflow_dispatch'
         run: terraform apply -auto-approve -no-color -input=false -parallelism=1 planfile.tfplan
 
       - name: Aws Configure Creds
