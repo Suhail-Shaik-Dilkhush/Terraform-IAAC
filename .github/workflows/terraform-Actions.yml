@@ -78,10 +78,13 @@ jobs:
         if: steps.Apply.outcome == 'success'
         run: aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.EKS_CLUSTER }}
 
+      - name: save the kube config file to s3
+        if: steps.getconfig.outcome == 'success'
+        run: aws s3 cp /home/runner/.kube/config s3://${{ env.BUCKET_TF_STATE }}/kubeconfig --region ${{ env.AWS_REGION }}
+
       - name: running manual command to test kubectl
         if: steps.getconfig.outcome == 'success'
         run: |
-          cat /home/runner/.kube/config
           aws sts get-caller-identity
 
       - name: Install Ingress Controller
