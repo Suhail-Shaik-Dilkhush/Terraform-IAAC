@@ -76,7 +76,7 @@ jobs:
       - name: Get Kube Config File
         id: getconfig
         if: steps.Apply.outcome == 'success'
-        run: aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.EKS_CLUSTER }} --profile suhail_admin
+        run: aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.EKS_CLUSTER }}
 
       - name: save the kube config file to s3
         if: steps.getconfig.outcome == 'success'
