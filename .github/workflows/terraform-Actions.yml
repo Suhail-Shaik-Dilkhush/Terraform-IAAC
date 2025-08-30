@@ -91,4 +91,4 @@ jobs:
         id: install_ingress
         if: steps.Apply.outcome == 'success' && steps.getconfig.outcome == 'success'
         run: |
-          kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml --validate=false
+          kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml
