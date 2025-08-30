@@ -1,5 +1,5 @@
 ---
-name: Terraform Actions
+name: Terraform Destroy
 on: workflow_dispatch
 env:
   AWS_REGION: eu-north-1
